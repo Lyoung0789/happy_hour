@@ -1,6 +1,7 @@
 # HappyHour
 
 Find local happy hour locations, times and what they offer!
+Hello World!
 
 ## Installation
 
