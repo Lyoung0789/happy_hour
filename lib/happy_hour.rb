@@ -1,6 +1,4 @@
-require "happy_hour/version"
+require_relative "./happy_hour/version"
+require_relative "./happy_hour/cli"
 
-module HappyHour
-  class Error < StandardError; end
-  # Your code goes here...
-end
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby 
+require_relative "../lib/happy_hour"
+
+HappyHour::CLI.new.call
