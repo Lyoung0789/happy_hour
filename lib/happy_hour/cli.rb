@@ -15,11 +15,11 @@ class HappyHour::CLI
   
   #list_names will need to tak in argument from zipcode
   def list_names 
-    puts "1. Applebees"
-    puts "2. Domu"
-    puts "3. Tori Tori"
-    
+    @locations = HappyHour::Restaurants.local
   end 
+  
+  #@locations = HappyHour::Restaurants.local to hold all the information of local restarunts
+  
   
   def information 
     input = " "
