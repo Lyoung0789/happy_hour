@@ -1,7 +1,7 @@
 class HappyHour::CLI 
   
   def call
-    zip_code
+    # zip_code
     list_names
     information
     the_end
@@ -16,6 +16,7 @@ class HappyHour::CLI
   #list_names will need to tak in argument from zipcode
   def list_names 
     @locations = HappyHour::Restaurants.local
+    @locations.each_with_index {|r, i| puts "#{i+1}. #{r.name}"}
   end 
   
   #@locations = HappyHour::Restaurants.local to hold all the information of local restarunts

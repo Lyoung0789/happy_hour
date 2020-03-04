@@ -1,3 +1,5 @@
+# this is going to return the information of the restarunts
+
 class HappyHour::Restaurants
   attr_accessor :name, :hours, :deals, :location, :url
   
@@ -27,8 +29,9 @@ class HappyHour::Restaurants
     place_3.location = "7567 a place street "
     place_3.url = "tori_tori.com"
     
-    puts [place_1, place_2, place_3]
+    [place_1, place_2, place_3]
     
   end 
   
 end 
+
