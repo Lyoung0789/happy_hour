@@ -42,10 +42,15 @@ class HappyHour::Restaurants
     # go to happy-hour.com enter zip code 
     # extract information from site
     # instantiate new location 
-    
+    happy << self.scrape_site
     happy
     
   end 
   
+  def self.scrape_site
+    doc = Nokogiri::HTML(open("https://www.happy-hour.com/search/?n=&s=32837&type=&submit=Search&miles=15&cuisine=&freefood=&ams_opt=any"))
+    binding.pry
+    
+  end 
 end 
 
