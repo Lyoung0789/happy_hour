@@ -50,9 +50,9 @@ class HappyHour::Restaurants
     
   # end 
   
-  def self.scrape_site
+  def self.scrape_site(zipcode)
     title =[]
-    doc = Nokogiri::HTML(open("https://www.happy-hour.com/search/?n=&s=32837&type=&submit=Search&miles=15&cuisine=&freefood=&ams_opt=any"))
+    doc = Nokogiri::HTML(open("https://www.happy-hour.com/search/?n=&s=#{zipcode}&type=&submit=Search&miles=15&cuisine=&freefood=&ams_opt=any"))
     first_layer = doc.css("div.contentLShadowInner div.contentLInnerContainer")
     
     first_layer.each do |r|
@@ -61,14 +61,18 @@ class HappyHour::Restaurants
         info[:name] = r.css("a.bodyRedA").text
         info[:location] = r.css("span.bodySm").text
         info[:url] = r.css("a.bodyRedA").attribute("href").value
+        
+        #create new restaurants here.
+        #the scrape should be in a class of its own
+        @@all << info
         # binding.pry
       end 
-      @@all << info
+      # binding.pry 
+      
     end 
     
     # binding.pry
     @@all.pop
-    @@all.shift
     @@all
     
   end 

@@ -1,7 +1,7 @@
 class HappyHour::CLI 
   
   def call
-    # zip_code
+    zip_code
     list_names
     information
     the_end
@@ -11,11 +11,12 @@ class HappyHour::CLI
   def zip_code
      puts "Hi! Enter your zip code to find restarunts offering Happy Hour near you:"
     input = gets.strip
+    @locations = HappyHour::Restaurants.scrape_site(input)
   end 
   
   #list_names will need to tak in argument from zipcode
   def list_names 
-    @locations = HappyHour::Restaurants.local
+    # @locations = HappyHour::Restaurants.scrape_site
     # binding.pry
     @locations.each_with_index {|r, i| puts "#{i+1}. #{r[:name]}"}
     
