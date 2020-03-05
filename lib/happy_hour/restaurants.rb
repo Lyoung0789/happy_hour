@@ -55,18 +55,18 @@ class HappyHour::Restaurants
     
     first_layer.each do |r|
       info = {}
-      # if r.css("a.bodyRedA").text != ""
-      #   title << r.css("a.bodyRedA").text
-      # end 
-      if r.css("a.bodyRedA").text != ""
+      if r.css("a.bodyRedA").text != "" 
         info[:name] = r.css("a.bodyRedA").text
+        info[:location] = r.css("span.bodySm").text
+        info[:url] = r.css("a.bodyRedA").attribute("href").value
         # binding.pry
       end 
       @@all << info
     end 
     
     binding.pry
-    info
+    @@all.pop
+    @@all
     
   end 
   
