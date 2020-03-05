@@ -4,9 +4,7 @@ class HappyHour::Restaurants
   attr_accessor :name, :hours, :deals, :location, :url, :number
   
   def self.local 
-    # puts "1. Applebees"
-    # puts "2. Domu"
-    # puts "3. Tori Tori"
+   #must return Scrape then returns delas based on the data
     
     place_1 = self.new 
     place_1.name = "Applebees"
@@ -32,7 +30,20 @@ class HappyHour::Restaurants
     place_3.url = "tori_tori.com"
     place_3.number = 3333333333
     
+    # binding.pry
+    
     [place_1, place_2, place_3]
+    
+  end 
+  
+  
+  def self.scrape_locations
+    happy = []
+    # go to happy-hour.com enter zip code 
+    # extract information from site
+    # instantiate new location 
+    
+    happy
     
   end 
   
