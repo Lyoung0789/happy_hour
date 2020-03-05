@@ -1,7 +1,7 @@
 # this is going to return the information of the restarunts
 
 class HappyHour::Restaurants
-  attr_accessor :name, :hours, :deals, :location, :url
+  attr_accessor :name, :hours, :deals, :location, :url, :number
   
   def self.local 
     # puts "1. Applebees"
@@ -14,6 +14,7 @@ class HappyHour::Restaurants
     place_1.deals = "Free everything"
     place_1.location = "1234 somewhwere blvd "
     place_1.url = "https://www.applebees.com/en"
+    place_1.number = 543524262
     
     place_2 = self.new 
     place_2.name = "Domu"
@@ -21,6 +22,7 @@ class HappyHour::Restaurants
     place_2.deals = "Free food domu"
     place_2.location = "7777 OG street "
     place_2.url = "Domufl.com"
+    place_2.number = 1111111111
     
     place_3 = self.new 
     place_3.name = "Tori Tori"
@@ -28,6 +30,7 @@ class HappyHour::Restaurants
     place_3.deals = "half off select drinks"
     place_3.location = "7567 a place street "
     place_3.url = "tori_tori.com"
+    place_3.number = 3333333333
     
     [place_1, place_2, place_3]
     
