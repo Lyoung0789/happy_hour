@@ -1,6 +1,7 @@
 # this is going to return the information of the restarunts
 
 class HappyHour::Restaurants
+  @@all = []
   attr_accessor :name, :hours, :deals, :location, :url, :number
   
   def self.local 
@@ -53,13 +54,22 @@ class HappyHour::Restaurants
     first_layer = doc.css("div.contentLShadowInner div.contentLInnerContainer")
     
     first_layer.each do |r|
+      info = {}
+      # if r.css("a.bodyRedA").text != ""
+      #   title << r.css("a.bodyRedA").text
+      # end 
       if r.css("a.bodyRedA").text != ""
-    title << r.css("a.bodyRedA").text
-  end 
-end 
-
-puts title
+        info[:name] = r.css("a.bodyRedA").text
+        # binding.pry
+      end 
+      @@all << info
+    end 
+    
+    binding.pry
+    info
     
   end 
+  
+  
 end 
 
