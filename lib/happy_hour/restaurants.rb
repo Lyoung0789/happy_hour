@@ -48,8 +48,17 @@ class HappyHour::Restaurants
   end 
   
   def self.scrape_site
+    title =[]
     doc = Nokogiri::HTML(open("https://www.happy-hour.com/search/?n=&s=32837&type=&submit=Search&miles=15&cuisine=&freefood=&ams_opt=any"))
-    binding.pry
+    first_layer = doc.css("div.contentLShadowInner div.contentLInnerContainer")
+    
+    first_layer.each do |r|
+      if r.css("a.bodyRedA").text != ""
+    title << r.css("a.bodyRedA").text
+  end 
+end 
+
+puts title
     
   end 
 end 
