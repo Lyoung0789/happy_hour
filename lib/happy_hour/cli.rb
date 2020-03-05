@@ -16,7 +16,8 @@ class HappyHour::CLI
   #list_names will need to tak in argument from zipcode
   def list_names 
     @locations = HappyHour::Restaurants.local
-    @locations.each_with_index {|r, i| puts "#{i+1}. #{r.name}"}
+    # binding.pry
+    @locations.each_with_index {|r, i| puts "#{i+1}. #{r[:name]}"}
     
   end 
   
