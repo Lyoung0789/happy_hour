@@ -1,6 +1,7 @@
 class HappyHour::CLI 
   
   def call
+    puts "Hi! Enter your zip code to find restarunts offering Happy Hour near you:"
     zip_code
     list_names
     information
@@ -9,9 +10,12 @@ class HappyHour::CLI
   
   
   def zip_code
-     puts "Hi! Enter your zip code to find restarunts offering Happy Hour near you:"
     input = gets.strip
     HappyHour::Scrape.scrape_site(input)
+    if HappyHour::Restaurants.all.empty?
+      puts "Please enter new zipcode"
+      zip_code
+    end 
     # binding.pry 
   end 
   
