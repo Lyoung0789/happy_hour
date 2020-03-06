@@ -31,7 +31,7 @@ class HappyHour::CLI
       if input.to_i > 0 && input.to_i <= HappyHour::Restaurants.all.size
         location = HappyHour::Restaurants.all[input.to_i-1]
         
-        puts "#{location.name}\n#{location.location}\n#{location.deals}\n#{location.number}"
+        puts "#{location.name}\n#{location.location}\n#{location.deals}\n#{location.number}\n#{location.hours}"
         
         # binding.pry
       elsif input == "list"

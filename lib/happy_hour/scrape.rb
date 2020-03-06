@@ -12,6 +12,8 @@ def self.scrape_site(zipcode)
           restaurant.url = r.css("a.bodyRedA").attribute("href").value
           restaurant.deals = self.scrape_deals(restaurant.url)
           restaurant.number = scrape_number(restaurant.url)
+          restaurant.hours = scrape_hours(restaurant.url)
+
         end 
       end 
       HappyHour::Restaurants.all.pop
@@ -27,7 +29,7 @@ def self.scrape_deals(url)
     things = doc.css("div.contentLInnerContainerPadBot") 
     #goes through the array of information, if it includes any of the following then we can set :deals equal to that
     #if no deals, contact store
-    things.xpath("//td//span").each do |r|
+    things.css(" td span").each do |r|
       if r.text.include?("$") || r.text.include?("Half") || r.text.include?("1/2")
         if !description.include?(r) 
           description = r.text
@@ -42,6 +44,18 @@ def self.scrape_number(url)
     first_layer = doc.css("div.contentMajCitShadowInner div.contentMajCitInnerContainer span.bodySm").text
     array = first_layer.split(/[[:space:]]/)
     array[1]
+end 
+
+def self.scrape_hours(url)
+    hours = "Please contact store for hours"
+    doc = Nokogiri::HTML(open(url))
+    first_layer = doc.css("div.contentLInnerContainerPadBot")
+    first_layer.css("td span").each_with_index do |r, i|
+        if r.text.include?("Happy Hour")
+          hours = first_layer.css("td span")[i+1].text
+        end 
+      end 
+      hours
 end 
 
 end 
