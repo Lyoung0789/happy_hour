@@ -1,6 +1,7 @@
 class HappyHour::CLI 
   
   def call
+
     zip_code
     list_names
     information
@@ -30,10 +31,12 @@ class HappyHour::CLI
     while input != "exit"
     puts "Enter the number of the restaruant which you would like to view more details or type list to view list again or type exit to go back to menu" 
       input = gets.strip.downcase
-      if input.to_i > 0 
+      # binding.pry
+      if input.to_i > 0 && input.to_i <= @locations.size
         location = @locations[input.to_i-1]
-        puts "#{location.name}\n#{location.location}\n#{location.number}\n#{location.url}"
-        puts "Specials: #{location.deals}\nHH times: #{location.hours}"
+        
+        puts "#{location[:name]}\n#{location[:location]}\n#{location[:deals]}\n#{location[:url]}"
+        
       elsif input == "list"
         list_names
       elsif input.to_i > @locations.size
@@ -41,18 +44,6 @@ class HappyHour::CLI
       else 
         puts "Sorry, your request wasnt submitted. Please enter an option for more information on the location, 'list' to view the locations, or 'exit' to exit the program."
       end 
-      # case input 
-      #   when "1"
-      #     puts "youve accessed more in on Applebees type exit to end program"
-      #   when "2"
-      #     puts "youve accessed more info on Domutype exit to end program"
-      #   when "3"
-      #     puts "youve accessed more info on Tori Tori type exit to end program"
-      #   when "list"
-      #     list_names
-      #   else 
-      #     puts "Please enter valid selection"
-      # end 
     end 
   end 
   
@@ -61,5 +52,7 @@ class HappyHour::CLI
     puts 'Thank you for using Happy_Hour'
   end 
   
+
+ 
   
 end 
