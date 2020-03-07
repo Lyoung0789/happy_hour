@@ -3,7 +3,7 @@ class HappyHour::Scrape
 def self.scrape_site(zipcode)
     doc = Nokogiri::HTML(open("https://www.happy-hour.com/search/?n=&s=#{zipcode}&type=&submit=Search&miles=15&cuisine=&freefood=&ams_opt=any"))
     first_layer = doc.css("div.contentLShadowInner div.contentLInnerContainer")
-    # binding.pry
+    
     first_layer.each do |r|
         restaurant = HappyHour::Restaurants.new
         if r.css("a.bodyRedA").text != "" 
@@ -19,7 +19,7 @@ def self.scrape_site(zipcode)
       HappyHour::Restaurants.all.pop
       HappyHour::Restaurants.all.shift
       
-    #   binding.pry 
+    
 
 end 
 
@@ -27,8 +27,7 @@ def self.scrape_deals(url)
     doc = Nokogiri::HTML(open(url))
     description = "Please contact location for Happy Hour updates"
     things = doc.css("div.contentLInnerContainerPadBot") 
-    #goes through the array of information, if it includes any of the following then we can set :deals equal to that
-    #if no deals, contact store
+    
     things.css(" td span").each do |r|
       if r.text.include?("$") || r.text.include?("Half") || r.text.include?("1/2")
         if !description.include?(r) 
