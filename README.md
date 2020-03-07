@@ -1,6 +1,9 @@
 # HappyHour
 
-Find local happy hour locations, times and what they offer!
+This program was designed to find available Happy Hour specials near you! After inputting your zipcode, a list of 10 Happy Hour restaurants will be displayed. You can select each individual
+restaurant to see the address, the number, the Happy Hour times, and the specials provided. There are other options such as 'list' which will show you the list of restaurants again, and
+'zipcode', which will allow the user to input in a new zipcode, and will return a new list of Happy Hour locations which can be accessed for more information. This program scrapes the page 
+happy-hour.com for results. 
 
 
 ## Installation
@@ -21,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run the program, open up terminal and make your way to the happy_hour folder. Then run ./bin/happy_hour to start program. 
 
 ## Development
 
