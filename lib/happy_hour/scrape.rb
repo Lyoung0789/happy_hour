@@ -20,35 +20,30 @@ def self.scrape_site(zipcode)
       HappyHour::Restaurants.all.shift
       
     
-
 end 
 
 def self.scrape_deals(url)
-    doc = Nokogiri::HTML(open(url))
+    @doc_2 = Nokogiri::HTML(open(url))
     description = "Please contact location for Happy Hour updates"
-    things = doc.css("div.contentLInnerContainerPadBot") 
+    things = @doc_2.css("div.contentLInnerContainerPadBot") 
     
     things.css(" td span").each do |r|
       if r.text.include?("$") || r.text.include?("Half") || r.text.include?("1/2")
-        if !description.include?(r) 
-          description = r.text
-        end 
+        description = r.text
       end 
     end 
     description
 end 
 
 def self.scrape_number(url)
-    doc = Nokogiri::HTML(open(url))
-    first_layer = doc.css("div.contentMajCitShadowInner div.contentMajCitInnerContainer span.bodySm").text
+    first_layer = @doc_2.css("div.contentMajCitShadowInner div.contentMajCitInnerContainer span.bodySm").text
     array = first_layer.split(/[[:space:]]/)
     array[1]
 end 
 
 def self.scrape_hours(url)
     hours = "Please contact store for hours"
-    doc = Nokogiri::HTML(open(url))
-    first_layer = doc.css("div.contentLInnerContainerPadBot")
+    first_layer = @doc_2.css("div.contentLInnerContainerPadBot")
     first_layer.css("td span").each_with_index do |r, i|
         if r.text.include?("Happy Hour")
           hours = first_layer.css("td span")[i+1].text
